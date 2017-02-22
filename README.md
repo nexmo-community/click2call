@@ -5,7 +5,7 @@ When customers want to talk to you they enter their name and number into the for
 
 You can test out your own copy of this right now on heroku by clicking this button.
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/nexmo-community/click2call)
 
 You will then be asked for a few parameters, and once you know the hostname (eg `example.herokuapp.com`) of your application you will need to create a Nexmo Application using the Nexmo CLI
 
