@@ -1,0 +1,6 @@
+.DS_Store
+private.key
+venv
+.env
+setvars.sh
+

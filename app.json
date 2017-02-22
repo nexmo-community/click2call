@@ -1,0 +1,34 @@
+{
+  "name": "Nexmo Click to Call",
+  "description": "Example of a Click to Call app",
+  "repository": "https://github.com/nexmo-community/click2call",
+  "logo": "https://avatars0.githubusercontent.com/u/551057?v=3&s=200",
+  "env": {
+    "MY_NUMBER": {
+      "description": "The phone number you want callers to reach you on",
+      "value": ""
+    },
+    "MY_LVN": {
+      "description": "The number you have rented from Nexmo to use as the CallerID",
+      "value": ""
+    },
+    "APP_ID": {
+      "description": "The UUID of your Nexmo voice applicaiton",
+      "value": ""
+    },
+    "PRIVATE_KEY": {
+      "description": "The private key that was generated when you created the nexmo voice application",
+      "value": ""
+    },
+    "URL": {
+      "description": "The hostname where this app is running eg example.herokuapp.com",
+      "value": ""
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "free"
+   }
+  }
+}
