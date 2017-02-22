@@ -9,5 +9,5 @@ You can test out your own copy of this right now on heroku by clicking this butt
 
 You will then be asked for a few parameters, and once you know the hostname (eg `example.herokuapp.com`) of your application you will need to create a Nexmo Application using the Nexmo CLI
 
-`nexmo app:create "Audiosocket Demo" "https://YOUR-HOSTNAME/ncco" "https://YOUR-HOSTNAME/event"`
+`nexmo app:create "My Click to Call Demo" "https://YOUR-HOSTNAME/ncco" "https://YOUR-HOSTNAME/event"`
 
