@@ -9,9 +9,16 @@ import json
 
 mynumber = os.environ['MY_NUMBER'] #Where you want the callers to be connected to
 mylvn = os.environ['MY_LVN'] # Your Nexmo number, used as the CLI to both parties
-url = os.getenv('HEROKU_APP_NAME') + '.herokuapp.com' or os.environ['URL']
+if os.getenv('HEROKU_APP_NAME'):
+    url = os.getenv('HEROKU_APP_NAME') + '.herokuapp.com' 
+else:
+    url = os.environ['URL']
 application_id = os.environ['APP_ID'] # Application ID returned by the nexmo cli when you create the applicaiton
-private_key = os.environ['PRIVATE_KEY']
+try:
+    private_key = os.environ['PRIVATE_KEY']
+except:
+    with open('private.key', 'r') as f:
+        PRIVATE_KEY = f.read()
 
 
 class MainHandler(tornado.web.RequestHandler):
