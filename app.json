@@ -19,10 +19,6 @@
     "PRIVATE_KEY": {
       "description": "The private key that was generated when you created the nexmo voice application",
       "value": ""
-    },
-    "URL": {
-      "description": "The hostname where this app is running eg example.herokuapp.com",
-      "value": ""
     }
   },
   "formation": {

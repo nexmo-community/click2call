@@ -9,7 +9,7 @@ import json
 
 mynumber = os.environ['MY_NUMBER'] #Where you want the callers to be connected to
 mylvn = os.environ['MY_LVN'] # Your Nexmo number, used as the CLI to both parties
-url = os.environ['URL'] # The base URL where this is running
+url = os.getenv('HEROKU_APP_NAME') + '.herokuapp.com' or os.environ['URL']
 application_id = os.environ['APP_ID'] # Application ID returned by the nexmo cli when you create the applicaiton
 private_key = os.environ['PRIVATE_KEY']
 
