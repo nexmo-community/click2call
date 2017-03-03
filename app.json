@@ -29,9 +29,6 @@
       "value": ""
     }
   },
-  "scripts": {
-       "postdeploy": "/bin/bash ./postDeploy.sh"
-   },
   "buildpacks": [
      {
        "url": "https://github.com/nexmo-community/heroku-buildpack-voice"
