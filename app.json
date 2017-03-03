@@ -27,7 +27,7 @@
   },
   "buildpacks": [
      {
-       "url": "https://github.com/nexmo-communuty/heroku-buildpack-voice"
+       "url": "https://github.com/nexmo-community/heroku-buildpack-voice"
      },
      {
         "url": "heroku/python"
