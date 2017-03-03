@@ -8,6 +8,9 @@
       "description": "The phone number you want callers to reach you on",
       "value": ""
     },
+    "NAME": {
+      "description": "The Heroku app name, enter it exactly the same as you have above",
+    },
      "CREATE_NEXMO_APP": {
       "description": "Should the application automatically create a nexmo application and purchase a new phone number",
       "value": "yes"
