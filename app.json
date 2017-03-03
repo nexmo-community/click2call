@@ -26,7 +26,7 @@
     }
   },
   "scripts": {
-       "postdeploy": "postDeploy.sh"
+       "postdeploy": "/bin/bash ./postDeploy.sh"
    },
   "buildpacks": [
      {
