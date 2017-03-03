@@ -8,19 +8,31 @@
       "description": "The phone number you want callers to reach you on",
       "value": ""
     },
-    "MY_LVN": {
-      "description": "The number you have rented from Nexmo to use as the CallerID",
+     "CREATE_NEXMO_APP": {
+      "description": "Should the application automatically create a nexmo application and purchase a new phone number",
+      "value": "yes"
+    },
+    "API_KEY": {
+      "description": "Your Nexmo API Key",
       "value": ""
     },
-    "APP_ID": {
-      "description": "The UUID of your Nexmo voice applicaiton",
+    "API_SECRET": {
+      "description": "Your Nexmo API Secret",
       "value": ""
     },
-    "PRIVATE_KEY": {
-      "description": "The private key that was generated when you created the nexmo voice application",
+    "CC": {
+      "description": "The ISO 3361 Country Code wheere you want the number to be purcahsed eg, US, GB, ES etc.",
       "value": ""
     }
   },
+  "buildpacks": [
+     {
+       "url": "https://github.com/nexmo-communuty/heroku-buildpack-voice"
+     },
+     {
+        "url": "heroku/python"
+     }
+   ],
   "formation": {
     "web": {
       "quantity": 1,
