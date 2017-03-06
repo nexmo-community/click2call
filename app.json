@@ -31,10 +31,10 @@
   },
   "buildpacks": [
      {
-       "url": "https://github.com/nexmo-community/heroku-buildpack-voice"
+        "url": "heroku/python"
      },
      {
-        "url": "heroku/python"
+       "url": "https://github.com/nexmo-community/heroku-buildpack-voice"
      }
    ],
   "formation": {
