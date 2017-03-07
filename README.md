@@ -7,7 +7,6 @@ You can test out your own copy of this right now on heroku by clicking this butt
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/nexmo-community/click2call)
 
-You will then be asked for a few parameters, and once you know the hostname (eg `example.herokuapp.com`) of your application you will need to create a Nexmo Application using the Nexmo CLI
-
-`nexmo app:create "My Click to Call Demo" "https://YOUR-HOSTNAME/ncco" "https://YOUR-HOSTNAME/event"`
-
+This will launch the heroku installer console, you will be asked to enter a name for your app (we need this twice) something like "CallFred" is good.
+It will also ask you to enter your number where you want callers to be connected to, enter your number in internatonal format without the + eg `447790900123` 
+It will also ask you for your nexmo API Key and Secret and finally it will ask you to enter a country where you would like to purchase a nexmo number, For this demo the number is only used for the Caller ID.
