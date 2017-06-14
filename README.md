@@ -1,5 +1,5 @@
 # Click 2 Call
-This is an example of a  Click To Call application built using the Nexmo Voice API, you could embed the web form on your companies website and configure the applicaiton with your sales phon number, 
+This is an example of a  Click To Call application built in Python using the Nexmo Voice API, you could embed the web form on your companies website and configure the applicaiton with your sales phon number, 
 
 When customers want to talk to you they enter their name and number into the form and Nexmo will setup a call between you and the customer, firstly your number is called and the call is announced with the customers name then the customers number is called an you are connected.
 
