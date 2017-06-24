@@ -7,21 +7,43 @@ from string import Template
 import nexmo
 import json
 
-mynumber = os.environ['MY_NUMBER']  # Where you want the callers to be connected to
-mylvn = os.environ['MY_LVN']  # Your Nexmo number, used as the CLI to both parties
-if os.getenv('NAME'):
-    url = os.getenv('NAME') + '.herokuapp.com'
-else:
-    url = os.environ['URL']
 
-# Application ID returned by the nexmo cli when you create the applicaiton
-application_id = os.environ['APP_ID']
+class NexmoConfig(object):
 
-try:
-    private_key = os.environ['PRIVATE_KEY']
-except:
-    with open('private.key', 'r') as f:
-        PRIVATE_KEY = f.read()
+    def __init__(self):
+        try:
+            from dotenv import load_dotenv, find_dotenv
+            load_dotenv(find_dotenv())
+        except:
+            pass  # python-dotenv not installed
+
+        try:
+            self.MY_NUMBER = os.environ['MY_NUMBER']
+            self.MY_LVN = os.environ['MY_LVN']
+            self.APP_ID = os.environ['APP_ID']
+            self.URL = self._get_url()
+            self.PRIVATE_KEY = self._get_private_key()
+        except KeyError:
+            raise Exception("Missing required Nexmo config variable")
+
+    @staticmethod
+    def _get_url():
+        try:
+            return "{name}.herokuapp.com".format(
+                name=os.environ['NAME']
+            )
+        except:
+            return os.environ['URL']
+
+    @staticmethod
+    def _get_private_key():
+        try:
+            return os.environ['PRIVATE_KEY']
+        except:
+            with open('private.key', 'r') as f:
+                private_key = f.read()
+
+            return private_key
 
 
 class MainHandler(tornado.web.RequestHandler):
@@ -40,23 +62,27 @@ class MainHandler(tornado.web.RequestHandler):
 
 class CallHandler(tornado.web.RequestHandler):
 
+    def __init__(self, *args, **kwargs):
+        self.config = NexmoConfig()
+        super(CallHandler, self).__init__(*args, **kwargs)
+
     @tornado.web.asynchronous
     def post(self):
         data = json.loads(self.request.body)
 
         client = nexmo.Client(
-            application_id=application_id,
-            private_key=private_key,
+            application_id=self.config.APP_ID,
+            private_key=self.config.PRIVATE_KEY,
             # Dummy values for key and secret as the lib requires them even though they're not used
             key='dummy',
             secret='dummy'
         )
 
         request = {
-            'to': [{'type': 'phone', 'number': mynumber}],
-            'from': {'type': 'phone', 'number': mylvn},
+            'to': [{'type': 'phone', 'number': self.config.MY_NUMBER}],
+            'from': {'type': 'phone', 'number': self.config.MY_LVN},
             'answer_url': ['https://{url}/ncco?name={name}&number={number}'.format(
-                url=url,
+                url=self.config.URL,
                 name=data['name'],
                 number=data['number']
             )]
@@ -70,13 +96,17 @@ class CallHandler(tornado.web.RequestHandler):
 
 class NCCOHandler(tornado.web.RequestHandler):
 
+    def __init__(self, *args, **kwargs):
+        self.config = NexmoConfig()
+        super(NCCOHandler, self).__init__(*args, **kwargs)
+
     @tornado.web.asynchronous
     def get(self):
         data = {
             'name': self.get_argument('name'),
             'number': self.get_argument('number'),
-            'url': url,
-            'lvn': mylvn
+            'url': self.config.URL,
+            'lvn': self.config.MY_LVN
         }
 
         filein = open('ncco.json')
