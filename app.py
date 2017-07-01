@@ -109,7 +109,7 @@ class NCCOHandler(tornado.web.RequestHandler):
             'lvn': self.config.MY_LVN
         }
 
-        filein = open('ncco.json')
+        filein = open('templates/ncco.json')
         src = Template(filein.read())
         filein.close()
 
