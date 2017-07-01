@@ -13,7 +13,11 @@ class NexmoConfig(object):
     def __init__(self):
         try:
             from dotenv import load_dotenv, find_dotenv
-            load_dotenv(find_dotenv())
+
+            # Explicitly check to avoid warnings in tests
+            dotenv_file = find_dotenv()
+            if dotenv_file:
+                load_dotenv(dotenv_file)
         except:
             pass  # python-dotenv not installed
 
