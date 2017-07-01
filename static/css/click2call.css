@@ -1,0 +1,19 @@
+html {
+  height: 100%;
+}
+body {
+  background: url(../images/background.png);
+  min-height: 100%;
+}
+
+.logo {
+  display: block;
+  margin: 100px auto 10px auto;
+}
+
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: auto;
+}

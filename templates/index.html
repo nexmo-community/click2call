@@ -2,75 +2,86 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-	<meta name="viewport" content="width.device-width, initial-scale=1.1 , maximum-scale=1.1">
+    <meta name="viewport" content="width.device-width, initial-scale=1.1 , maximum-scale=1.1">
     <title>Nexmo Click to Call Demo</title>
-    <style>
-    body{
-        background: #dee9fc;
-        text-align: center;
-    }
 
-    input {
-        width: 60%;
-        font-size:24px;
-        font-family:monospace;
-        
-    }
-
-    .button {
-        width: 60%;
-        background-color: #008CBA; /* Green */
-        border: none;
-        color: white;
-        padding: 15px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        vertical-align:middle;
-        font-family:monospace;
-    }
-    h1{
-        font-size:30px;
-        font-family:monospace;
-        color:  #666666;
-        
-    }
-    h3{
-        font-size:24px;
-        font-family:monospace;
-    }
-    </style>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script>
-    function call(){
-        var obj = new Object();
-        obj.name = $("#name").val();;
-        obj.number  = $("#number").val();;
-    	$.post( "/call", JSON.stringify(obj), function(response) {
-           $("#number").val('');
-           $("#name").val('');
-           if (response.status == "started"){
-               $("#result").html("<h3>✅ Calling you on " + obj.number + "📲</h3>") ;
-           }
-           else{
-                $("#result").html("<h3> ❌Sorry something went wrong, please try again </h3>") ;
-           }
-           
-    	});
-    }
-    </script
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.2/css/bulma.min.css" />
+    <link rel="stylesheet" href="/static/css/click2call.css" />
   </head>
   <body>
-    <img src="https://www.nexmo.com/static/images/logos/nexmo_logo_x2.png">
-    <h1>Click to Call</h1>
-   <div id='input' class='area'>
-    <input  id="name" placeholder="Your Name"><br>
-		<input  id="number" placeholder="Your Number"><br><br>
-		<button type="submit" class="button" id="button"  onclick='call()'>Call Me</button>    
-	</div>
-    <div id='result' class='area'>
-    
+    <div>
+      <div class="columns">
+        <div class="column is-12 has-text-centered">
+          <a href="https://nexmo.com" class="logo" title="Programmable building blocks for next generation communication applications.">
+            <img src="/static/images/nexmo_logo_white.png" alt="Nexmo logo" />
+          </a>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column is-10 is-offset-1 box">
+          <div class="field is-horizontal">
+            <div class="field-body">
+              <div class="field is-grouped">
+                <p class="control is-expanded has-icons-left">
+                  <input class="input is-large" type="text" id="name" placeholder="Name">
+                  <span class="icon is-small is-left">
+                    <i class="fa fa-user"></i>
+                  </span>
+                </p>
+              </div>
+              <div class="field">
+                <p class="control is-expanded has-icons-left has-icons-right">
+                  <input class="input is-large" type="phone" id="number" placeholder="Phone number">
+                  <span class="icon is-small is-left">
+                    <i class="fa fa-phone"></i>
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="field is-horizontal">
+            <div class="field-body">
+              <div class="field">
+                <div class="control">
+                  <a class="button is-info is-large is-pulled-right" id="send">
+                    <span class="icon is-medium is-left">
+                      <i class="fa fa-volume-control-phone"></i>
+                    </span>
+                    <span>Call me!</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
     </div>
+
+    <div class="notification is-primary is-hidden" id="notification-success">
+      <button class="delete"></button>
+      <h2>
+        <span class="icon is-left">
+          <i class="fa fa-thumbs-up"></i>
+        </span>
+        Calling you on <span id="notification-number"></span>
+      </h2>
+    </div>
+
+    <div class="notification is-danger is-hidden" id="notification-failure">
+      <button class="delete"></button>
+      <h2>
+        <span class="icon is-left">
+          <i class="fa fa-exclamation-triangle"></i>
+        </span>
+        Sorry something went wrong, please try again
+      </h2>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="/static/js/click2call.js"></script>
+    
   </body>
 </html>
