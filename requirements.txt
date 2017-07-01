@@ -1,5 +1,5 @@
 backports-abc==0.5
-certifi==2016.9.26
+certifi==2017.4.17
 cffi==1.9.1
 cryptography==1.7.1
 enum34==1.1.6
