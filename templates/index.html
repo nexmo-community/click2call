@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width.device-width, initial-scale=1.1 , maximum-scale=1.1">
+    <title>Nexmo Click to Call Demo</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.2/css/bulma.min.css" />
+    <link rel="stylesheet" href="/static/css/click2call.css" />
+  </head>
+  <body>
+    <div>
+      <div class="columns">
+        <div class="column is-12 has-text-centered">
+          <a href="https://nexmo.com" class="logo" title="Programmable building blocks for next generation communication applications.">
+            <img src="/static/images/nexmo_logo_white.png" alt="Nexmo logo" />
+          </a>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column is-10 is-offset-1 box">
+          <div class="field is-horizontal">
+            <div class="field-body">
+              <div class="field is-grouped">
+                <p class="control is-expanded has-icons-left">
+                  <input class="input is-large" type="text" id="name" placeholder="Name">
+                  <span class="icon is-small is-left">
+                    <i class="fa fa-user"></i>
+                  </span>
+                </p>
+              </div>
+              <div class="field">
+                <p class="control is-expanded has-icons-left has-icons-right">
+                  <input class="input is-large" type="phone" id="number" placeholder="Phone number">
+                  <span class="icon is-small is-left">
+                    <i class="fa fa-phone"></i>
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="field is-horizontal">
+            <div class="field-body">
+              <div class="field">
+                <div class="control">
+                  <a class="button is-info is-large is-pulled-right" id="send">
+                    <span class="icon is-medium is-left">
+                      <i class="fa fa-volume-control-phone"></i>
+                    </span>
+                    <span>Call me!</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="notification is-primary is-hidden" id="notification-success">
+      <button class="delete"></button>
+      <h2>
+        <span class="icon is-left">
+          <i class="fa fa-thumbs-up"></i>
+        </span>
+        Calling you on <span id="notification-number"></span>
+      </h2>
+    </div>
+
+    <div class="notification is-danger is-hidden" id="notification-failure">
+      <button class="delete"></button>
+      <h2>
+        <span class="icon is-left">
+          <i class="fa fa-exclamation-triangle"></i>
+        </span>
+        Sorry something went wrong, please try again
+      </h2>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="/static/js/click2call.js"></script>
+    
+  </body>
+</html>
